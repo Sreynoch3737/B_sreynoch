@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\FrontPageController;
 
 Route::get( uri: 'front_agency', action: function(){
@@ -23,3 +24,27 @@ Route::get('/testimonial',[FrontPageController::class,'testimonial'])->name('fro
 Route::get('master',function(){
     return view('front_master');
 });
+    
+Route::get('/auth_app',function(){
+    return view('Layouts.auth_app');
+});
+
+Route::get('register',function(){
+ return view('auth.register');
+});
+//for switching language route
+Route::get('/lang/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
+  });
+
+// Route::get('/lang/{locale}', function ($locale) {
+
+//     // return $locale;
+//       Session::put('locale', $locale);
+//       // session()->put('locale', $locale); 
+//       session()->save();
+//       // return redirect()->back();
+//       return app()->getlocale();
+//     });
+  

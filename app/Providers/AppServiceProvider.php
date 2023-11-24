@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $locale = $this->app['session']->get('locale'); // This would be the same as session()->get(... and Session::get(...
+        $this->app->setLocale($locale); // This would also equal app()->setLocale(... and App::setLocale(...
     }
+
+
 }
